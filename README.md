@@ -20,3 +20,6 @@ Soporte de chat en tiempo real usando WebSockets.
 - Tiene que llegar una notificacion a windows cuando se reciba un mensaje
 - Se tienen que poder enviar archivos y probablemente emojis
 - Las imágenes tal vez deben mostrarse como imagen en lugar de como archivo en el chat
+
+## Diagrama
+[Aquí está el flujo de la aplicación](https://sharing.clickup.com/9012719358/wb/h/8ck6bqy-732/9e710024a993e57)

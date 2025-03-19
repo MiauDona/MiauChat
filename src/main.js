@@ -1,18 +1,24 @@
-const { invoke } = window.__TAURI__.core;
+const { invoke } = window.__TAURI__.api;
 
-let greetInputEl;
-let greetMsgEl;
-
-async function greet() {
-  // Learn more about Tauri commands at https://tauri.app/develop/calling-rust/
-  greetMsgEl.textContent = await invoke("greet", { name: greetInputEl.value });
+// Llamar a la función para iniciar el P2P
+async function startChat() {
+    try {
+        await invoke('start_p2p');
+        console.log("Iniciando la conexión P2P...");
+    } catch (error) {
+        console.error("Error al iniciar P2P: ", error);
+    }
 }
 
-window.addEventListener("DOMContentLoaded", () => {
-  greetInputEl = document.querySelector("#greet-input");
-  greetMsgEl = document.querySelector("#greet-msg");
-  document.querySelector("#greet-form").addEventListener("submit", (e) => {
-    e.preventDefault();
-    greet();
-  });
-});
+// Llamar a la función para obtener el Peer ID
+async function fetchPeerId() {
+    try {
+        const peerId = await invoke('get_peer_id');
+        console.log(peerId);  // Muestra el Peer ID en la consola
+    } catch (error) {
+        console.error("Error al obtener el Peer ID: ", error);
+    }
+}
+
+startChat();
+fetchPeerId();
